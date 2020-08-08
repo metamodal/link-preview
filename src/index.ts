@@ -28,8 +28,6 @@ const getMetadataForHtml = (html: string) => {
 };
 
 const getMetadataForUrl = async (url: string) => {
-  const metadata: Metadata = {};
-
   const html = await getHtml(url);
 
   return getMetadataForHtml(html);
