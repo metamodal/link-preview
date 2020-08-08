@@ -1,21 +1,27 @@
-import { getMetadataForHtml } from "./";
+import fs from "fs";
+import path from "path";
+import { getMetadataForHtml, getMetadataForUrl } from "./";
 
-it("parses html to return metadata", () => {
-  const mockHtml = `
-    <html>
+const mockHtml = fs.readFileSync(
+  path.resolve(__dirname, "../docs/mockpage.html"),
+  "utf8"
+);
 
-    <head>
-      <meta property="og:site_name" content="YouTube">
-      <meta property="og:url" content="https://www.youtube.com/watch?v=jNQXAC9IVRw">
-    </head>
+const expectedMetadata = {
+  "og:site_name": "YouTube",
+  "og:url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+};
 
-    </html>
-  `;
+describe("getMetadataFromHtml", () => {
+  it("parses html to return metadata", () => {
+    expect(getMetadataForHtml(mockHtml)).toMatchObject(expectedMetadata);
+  });
+});
 
-  const expectedMetadata = {
-    "og:site_name": "YouTube",
-    "og:url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
-  };
-
-  expect(getMetadataForHtml(mockHtml)).toMatchObject(expectedMetadata);
+describe("getMetadataForUrl", () => {
+  it("returns metadata from html document at given URL", async () => {
+    await expect(
+      getMetadataForUrl("https://metamodal.github.io/link-preview/mockpage")
+    ).resolves.toMatchObject(expectedMetadata);
+  });
 });
