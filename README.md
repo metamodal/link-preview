@@ -1,6 +1,6 @@
 # Link Preview
 
-:warning: **Does not work on browsers!** This package only works in Node.js runtimes.
+:warning: **Does not work in browsers!** This package only works in Node.js runtimes.
 
 ## How to use
 
