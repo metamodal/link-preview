@@ -16,7 +16,6 @@
   "author": "Ashwin",
   "license": "ISC",
   "dependencies": {
-    "@types/cheerio": "^0.22.21",
     "cheerio": "^1.0.0-rc.3",
     "node-fetch": "^2.6.0"
   },
@@ -26,6 +25,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "@types/cheerio": "^0.22.21",
     "@types/jest": "^26.0.9",
     "@types/node-fetch": "^2.5.7",
     "babel-jest": "^26.2.2",
